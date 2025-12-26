@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiteSmart - CiteSmart Library</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <a href="index.html" class="brand">
+                <i class="ph-fill ph-books"></i> CiteSmart
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Beranda</a>
+                <a href="index.html#searchInput">Katalog</a>
+                <a href="repository.html">Repository</a>
+                <a href="favorites.html">Favorit</a>
+                <button class="btn-icon" id="themeToggle" style="margin-right: 10px;">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary" style="padding: 8px 20px;">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Temukan Referensi Terbaikmu</h1>
+            <p>Jelajahi ribuan buku, jurnal, dan karya ilmiah dari CiteSmart untuk mendukung penelitian dan
+                studimu.</p>
+
+            <div class="search-container">
+                <div class="search-input-group">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" id="searchInput" class="search-input"
+                        placeholder="Cari Buku, Jurnal, atau Karya Ilmiah...">
+                </div>
+
+
+
+                <button class="btn btn-primary" id="searchBtn">Cari</button>
+                <button class="btn btn-outline" id="advSearchBtn" style="white-space: nowrap;">Advanced Search</button>
+            </div>
+
+            <div class="categories">
+                <div class="chip active" data-category="all">Semua</div>
+                <div class="chip" data-category="Buku">Buku</div>
+                <div class="chip" data-category="E-Book">E-Book</div>
+                <div class="chip" data-category="Jurnal">Jurnal</div>
+                <div class="chip" data-category="Skripsi">Skripsi</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="section container" id="katalog">
+        <div class="section-header">
+            <h2>Koleksi Terbaru</h2>
+            <div class="view-toggles">
+                <button class="btn-icon active" id="viewGrid"><i class="ph ph-grid-four"></i></button>
+                <button class="btn-icon" id="viewList"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+
+        <div id="bookGrid" class="grid">
+            <!-- Books will be inserted here by JS -->
+        </div>
+    </section>
+
+    <!-- Subscription Databases Section -->
+    <section class="section container"
+        style="background-color: #fff; padding: 60px 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); margin-top: 60px;">
+        <div class="section-header" style="justify-content: center; text-align: center; margin-bottom: 50px;">
+            <div>
+                <h2 style="font-size: 2.2rem; color: var(--primary-color);">Subscription Databases</h2>
+                <p style="color: var(--text-secondary); margin-top: 10px;">Akses jurnal dan e-book internasional
+                    berkualitas.</p>
+            </div>
+        </div>
+
+        <div class="db-grid">
+            <!-- IEEE -->
+            <a href="https://ieeexplore.ieee.org" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #00629B;">IEEE <em>Xplore</em></h3>
+                <p class="db-type">e-Books, e-Journals & Magazine</p>
+                <ul class="db-list">
+                    <li>IEEE All-Society Periodicals Package</li>
+                    <li>MIT Press e-books Library</li>
+                    <li>Artech House ebooks</li>
+                </ul>
+            </a>
+
+            <!-- Springer -->
+            <a href="https://link.springer.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #EB6608;">Springer</h3>
+                <p class="db-type">e-Journals & e-Books</p>
+                <ul class="db-list">
+                    <li>Behavioural Science</li>
+                    <li>Computer Science</li>
+                    <li>Engineering</li>
+                </ul>
+            </a>
+
+            <!-- SAGE (New) -->
+            <a href="https://journals.sagepub.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #004C45;">SAGE</h3>
+                <p class="db-type">e-Journals</p>
+                <ul class="db-list">
+                    <li>Global Media & Communication</li>
+                    <li>Television & New Media</li>
+                    <li>Visual Communication</li>
+                </ul>
+            </a>
+
+            <!-- Statista -->
+            <a href="https://www.statista.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #08192E;">statista</h3>
+                <p class="db-type">Market & Consumer Data</p>
+                <ul class="db-list">
+                    <li>Statistics</li>
+                    <li>Studies & Reports</li>
+                    <li>Outlook</li>
+                </ul>
+            </a>
+
+            <!-- Bloomsbury (New) -->
+            <a href="https://www.bloomsburycollections.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #B2292E;">BLOOMSBURY</h3>
+                <p class="db-type">e-Books</p>
+                <ul class="db-list">
+                    <li>Arts & Visual Culture</li>
+                    <li>Design</li>
+                    <li>Fashion</li>
+                </ul>
+            </a>
+
+            <!-- ACM Digital Library (New) -->
+            <a href="https://dl.acm.org" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #008FD5;">ACM Digital Library</h3>
+                <p class="db-type">e-Journals & Proceedings</p>
+                <ul class="db-list">
+                    <li>Computer Science</li>
+                    <li>Information Technology</li>
+                    <li>Magazines</li>
+                </ul>
+            </a>
+
+            <!-- Taylor & Francis -->
+            <a href="https://www.tandfonline.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #2C2C2C;">Taylor & Francis</h3>
+                <p class="db-type">e-Journals</p>
+                <ul class="db-list">
+                    <li>Art & Humanities</li>
+                    <li>Creative Industry</li>
+                    <li>Science & Tech</li>
+                </ul>
+            </a>
+
+            <!-- Emerald -->
+            <a href="https://www.emerald.com/insight/" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #208E44;">emerald</h3>
+                <p class="db-type">e-Journals & Case Studies</p>
+                <ul class="db-list">
+                    <li>Accounting & Finance</li>
+                    <li>Marketing</li>
+                    <li>Operations</li>
+                </ul>
+            </a>
+
+            <!-- World Scientific (New) -->
+            <a href="https://www.worldscientific.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #003F72;">World Scientific</h3>
+                <p class="db-type">e-Books</p>
+                <ul class="db-list">
+                    <li>Developmental Entrepreneurship</li>
+                    <li>Innovation</li>
+                    <li>Economics</li>
+                </ul>
+            </a>
+
+            <!-- Scopus -->
+            <a href="https://www.scopus.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #FF6C00;">Scopus</h3>
+                <p class="db-type">Indexing Citation</p>
+                <ul class="db-list">
+                    <li>Jurnal</li>
+                    <li>Conference</li>
+                    <li>Patent</li>
+                </ul>
+            </a>
+
+            <!-- Inderscience (New) -->
+            <a href="https://www.inderscienceonline.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #1A5FA0;">INDERSCIENCE</h3>
+                <p class="db-type">e-Journals</p>
+                <ul class="db-list">
+                    <li>Design Research</li>
+                    <li>Engineering</li>
+                    <li>Technology</li>
+                </ul>
+            </a>
+
+            <!-- IET Digital Library (New) -->
+            <a href="https://digital-library.theiet.org" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #8C248D;">IET Digital Library</h3>
+                <p class="db-type">e-Books</p>
+                <ul class="db-list">
+                    <li>Computing & Telecommunications</li>
+                    <li>Engineering Technology</li>
+                    <li>Transportation</li>
+                </ul>
+            </a>
+
+            <!-- IG Library (New) -->
+            <a href="https://portal.igpublish.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #005A9C;">IG Library</h3>
+                <p class="db-type">e-Books</p>
+                <ul class="db-list">
+                    <li>Business</li>
+                    <li>Management</li>
+                    <li>BEP (Business Expert Press)</li>
+                </ul>
+            </a>
+
+            <!-- ScienceDirect -->
+            <a href="https://www.sciencedirect.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #FF6C00;">ScienceDirect</h3>
+                <p class="db-type">e-Journals</p>
+                <ul class="db-list">
+                    <li>Business</li>
+                    <li>Management</li>
+                    <li>Accounting</li>
+                </ul>
+            </a>
+
+            <!-- ProQuest -->
+            <a href="https://www.proquest.com" target="_blank" class="db-card">
+                <h3 class="db-title" style="color: #0093D0;">ProQuest</h3>
+                <p class="db-type">Dissertations & Theses</p>
+                <ul class="db-list">
+                    <li>Global Theses</li>
+                    <li>Full Text</li>
+                    <li>Abstracts</li>
+                </ul>
+            </a>
+        </div>
+    </section>
+
+    <!-- National Resources Section -->
+    <section class="section container" style="margin-top: 40px;">
+        <div class="section-header" style="justify-content: center; text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem;">National Resources</h2>
+        </div>
+
+        <div class="split-resources"
+            style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+            <!-- National Journal Section -->
+            <div>
+                <h3 style="margin-bottom: 20px; text-align: center; color: var(--primary-color);">NATIONAL JOURNAL</h3>
+                <div class="resource-grid-small" style="display: grid; gap: 15px;">
+                    <!-- Tel-U Journal -->
+                    <a href="https://journals.telkomuniversity.ac.id/" target="_blank" class="resource-card">
+                        <div class="icon"><i class="ph-fill ph-book-open-text"></i></div>
+                        <div>
+                            <h4>Jurnal of Telkom University</h4>
+                            <p>Akses jurnal ilmiah internal kampus.</p>
+                        </div>
+                    </a>
+
+                    <!-- National Journal -->
+                    <a href="https://openlibrary.telkomuniversity.ac.id/olafa/index.php/sumberjurnal" target="_blank"
+                        class="resource-card">
+                        <div class="icon"><i class="ph-fill ph-globe-hemisphere-east"></i></div>
+                        <div>
+                            <h4>e-Journal National</h4>
+                            <p>Koleksi jurnal nasional terakreditasi.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- E-Resources Perpusnas Section -->
+            <div>
+                <h3 style="margin-bottom: 20px; text-align: center; color: var(--primary-color);">E-RESOURCES PERPUSNAS
+                </h3>
+                <div class="resource-grid-small" style="display: grid; gap: 15px;">
+                    <!-- Perpusnas -->
+                    <a href="https://e-resources.perpusnas.go.id/" target="_blank" class="resource-card">
+                        <div class="icon"><i class="ph-fill ph-library-columns"></i></div>
+                        <div>
+                            <h4>E-Resources Perpusnas</h4>
+                            <p>Akses ke perpustakaan nasional RI.</p>
+                        </div>
+                    </a>
+
+                    <!-- OneSearch (New) -->
+                    <a href="https://onesearch.id/" target="_blank" class="resource-card">
+                        <div class="icon"><i class="ph-fill ph-magnifying-glass-plus"></i></div>
+                        <div>
+                            <h4>Indonesia OneSearch</h4>
+                            <p>Satu pintu pencarian untuk semua koleksi publik.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Column 1: Layanan & Bantuan -->
+                <div class="footer-column">
+                    <h4 style="color: #BE1622; margin-bottom: 15px;">Layanan</h4>
+                    <ul style="margin-bottom: 30px;">
+                        <li><a href="#searchInput">Peminjaman Buku</a></li>
+                        <li><a href="repository.html">Akses Jurnal</a></li>
+                        <li><a href="login.html">Ruang Diskusi</a></li>
+                        <li><a href="plagiarism.html">Cek Plagiasi</a></li>
+                    </ul>
+
+                    <h4 style="color: #BE1622; margin-bottom: 15px;">Bantuan</h4>
+                    <ul>
+                        <li><a href="javascript:alert('Panduan Pengguna sedang diperbarui.')">Panduan Pengguna</a></li>
+                        <li><a href="javascript:alert('Senin - Jumat: 08:00 - 19:30\nSabtu: 08:00 - 13:00')">Jam
+                                Operasional</a></li>
+                        <li><a href="mailto:library@citesmart.ac.id">Hubungi Pustakawan</a></li>
+                        <li><a href="javascript:alert('Belum ada pertanyaan yang sering diajukan.')">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Lokasi Perpustakaan (Bandung) -->
+                <div class="footer-column wide">
+                    <h4 style="color: #fff; margin-bottom: 20px;">Lokasi Perpustakaan</h4>
+
+                    <div class="loc-grid">
+                        <div class="loc-item">
+                            <h5>CiteSmart Bandung - Gedung Manterawu Lantai 5</h5>
+                            <p>Jl. Raya Harapan Bangsa No. 101<br>Bandung 40257 Indonesia</p>
+                            <p><i class="ph-bold ph-phone"></i> 081280000110</p>
+                            <p><i class="ph-bold ph-phone"></i> +6222 756 5929</p>
+                            <p><i class="ph-bold ph-envelope"></i> library@citesmart.ac.id</p>
+                            <p class="op-hours"><strong>Waktu operasional</strong><br>Senin - Jumat 08:00 -
+                                19:30<br>Sabtu 08:00 - 13:00</p>
+                        </div>
+
+                        <div class="loc-item">
+                            <h5>CiteSmart Bandung - Kampus Geger Kalong</h5>
+                            <p>Jl. Lembah Hijau Asri No. 88<br>Bandung Indonesia</p>
+                            <p><i class="ph-bold ph-phone"></i> 081280000110</p>
+                            <p><i class="ph-bold ph-envelope"></i> library@citesmart.ac.id</p>
+                            <p class="op-hours"><strong>Waktu operasional</strong><br>Senin - Jumat 08:00 - 16:30</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Lokasi Jakarta -->
+                <div class="footer-column">
+                    <div class="loc-item">
+                        <h5>CiteSmart Jakarta - Gedung Stasiun Bumi</h5>
+                        <p>Jl. Metro City Center Blok A, Cengkareng<br>Jakarta Barat 11730</p>
+                        <p><i class="ph-bold ph-phone"></i> (021)-545-1697</p>
+                        <p class="op-hours"><strong>Waktu operasional</strong><br>Senin - Jumat 08:00 - 16:30</p>
+                    </div>
+
+                    <div class="loc-item" style="margin-top: 20px;">
+                        <h5>CiteSmart Jakarta - Kampus B & C</h5>
+                        <p>Jl. Selatan Indah Permai No. 2A (Kampus B)<br>Jl. Menteng Executive No. 50 (Kampus
+                            C)<br>Jakarta
+                            Selatan</p>
+                    </div>
+                </div>
+
+                <!-- Column 4: Other Locations -->
+                <div class="footer-column">
+                    <div class="loc-item">
+                        <h5>CiteSmart Purwokerto</h5>
+                        <p>Gedung Rektorat Lantai 1<br>Jl. Gunung Slamet Sejahtera No. 128</p>
+                        <p><i class="ph-bold ph-phone"></i> 0813-9015-1393</p>
+                        <p class="op-hours"><strong>Waktu operasional</strong><br>Senin - Jumat 08:00 - 16:30</p>
+                    </div>
+
+                    <div class="loc-item" style="margin-top: 20px;">
+                        <h5>CiteSmart Surabaya</h5>
+                        <p>Jl. Pahlawan Revolusi No. 45, Surabaya</p>
+                        <p><i class="ph-bold ph-phone"></i> 0811-3278-005</p>
+                        <p class="op-hours"><strong>Waktu operasional</strong><br>Senin - Jumat 08:00 - 16:30</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <i class="ph-fill ph-books" style="font-size: 2rem; color: #BE1622;"></i>
+                        <span
+                            style="font-family: 'Outfit'; font-weight: 700; font-size: 1.5rem; color: #333;">CiteSmart</span>
+                    </div>
+                    <p>Copyright © 2024 - CiteSmart Library</p>
+                    <p style="font-size: 0.8rem; opacity: 0.7;">NPP : 3204122D0000002</p>
+                    <div
+                        style="margin-top: 10px; border: 1px solid #666; display: inline-block; padding: 2px 5px; border-radius: 4px; font-size: 0.8rem;">
+                        <i class="ph-bold ph-creative-commons"></i> BY NC
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Sosial Media</h4>
+                    <ul>
+                        <li><i class="ph-bold ph-instagram-logo"></i> Instagram CiteSmart</li>
+                        <li><i class="ph-bold ph-facebook-logo"></i> Facebook CiteSmart</li>
+                        <li><i class="ph-bold ph-telegram-logo"></i> Join Group Telegram CiteSmart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Widgets -->
+    <a href="#" class="float-btn chat-btn">
+        <i class="ph-fill ph-chat-circle-text"></i> Tanya Asisten
+    </a>
+
+    <button id="accessBtn" class="float-btn access-btn">
+        <i class="ph-fill ph-person-arms-spread"></i>
+    </button>
+
+    <button id="backToTopBtn" class="float-btn back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        style="opacity: 0; pointer-events: none;">
+        <i class="ph-bold ph-arrow-up"></i>
+    </button>
+
+    <!-- Accessibility Modal -->
+    <div id="accessModal" class="access-modal glass" style="display: none;">
+        <div class="access-header">
+            <h3>Aksesibilitas</h3>
+            <div style="display: flex; gap: 8px;">
+                <button class="btn-icon small" id="resetAccess" title="Atur Ulang"><i
+                        class="ph ph-arrow-counter-clockwise"></i></button>
+                <button class="btn-icon small" id="closeAccess"><i class="ph ph-x"></i></button>
+            </div>
+        </div>
+
+        <div class="access-body">
+            <!-- Text Adjustments -->
+            <div class="access-section">
+                <h4>Keterbacaan Teks</h4>
+                <div class="access-control-group">
+                    <button class="access-btn-control" onclick="adjustText(1)">
+                        <i class="ph ph-text-aa"></i> A+
+                    </button>
+                    <button class="access-btn-control" onclick="adjustText(-1)">
+                        <i class="ph ph-text-aa"></i> A-
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('font-dyslexia')">
+                        <i class="ph-fill ph-text-t"></i>
+                        <span>Dyslexia Font</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visual Modes -->
+            <div class="access-section">
+                <h4>Mode Visual</h4>
+                <div class="access-grid">
+                    <button class="access-card" onclick="toggleAccess('contrast-dark')">
+                        <i class="ph-fill ph-moon"></i>
+                        <span>Mode Gelap</span>
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('contrast-high')">
+                        <i class="ph-fill ph-circle-half"></i>
+                        <span>Kontras Tinggi</span>
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('saturation-low')">
+                        <i class="ph-fill ph-drop-slash"></i>
+                        <span>Desaturasi</span>
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('monochrome')">
+                        <i class="ph-fill ph-monitor"></i>
+                        <span>Monokrom</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reading Tools -->
+            <div class="access-section">
+                <h4>Alat Bantu Baca</h4>
+                <div class="access-grid">
+                    <button class="access-card" onclick="toggleAccess('reading-guide')">
+                        <i class="ph-fill ph-ruler"></i>
+                        <span>Garis Baca</span>
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('cursor-big')">
+                        <i class="ph-fill ph-cursor"></i>
+                        <span>Kursor Besar</span>
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('spacing-wide')">
+                        <i class="ph-fill ph-arrows-out-line-vertical"></i>
+                        <span>Jarak Luas</span>
+                    </button>
+                    <button class="access-card" onclick="toggleAccess('stop-anim')">
+                        <i class="ph-fill ph-pause-circle"></i>
+                        <span>Stop Animasi</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="access-footer-panel">
+            <button class="btn btn-primary full-width" id="resetAll">
+                <i class="ph ph-arrow-counter-clockwise"></i> Reset Semua
+            </button>
+            <div class="branding">Web Accessibility By Sienna ❤️</div>
+        </div>
+    </div>
+
+    <!-- Reading Guide Element -->
+    <div id="readingGuide" class="reading-guide" style="display: none;"></div>
+
+    <!-- Advanced Search Modal -->
+    <div id="advSearchModalOverlay" class="modal-overlay" style="display: none;">
+        <div class="adv-search-modal glass">
+            <div class="adv-search-header">
+                <h3>Pencarian Detil Katalog</h3>
+                <button class="btn-icon small" id="closeAdvSearch"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="adv-search-body">
+                <div class="form-group-adv">
+                    <label>Jenis</label>
+                    <div class="custom-select-wrapper">
+                        <select class="form-input-adv">
+                            <option value="">Pilih jenis katalog</option>
+                            <option value="buku">Buku</option>
+                            <option value="jurnal">Jurnal</option>
+                            <option value="skripsi">Skripsi</option>
+                        </select>
+                        <i class="ph ph-caret-down select-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group-adv">
+                    <label>Judul</label>
+                    <input type="text" class="form-input-adv" placeholder="Judul katalog">
+                </div>
+
+                <div class="form-group-adv">
+                    <label>Pengarang</label>
+                    <input type="text" class="form-input-adv" placeholder="Nama pengarang katalog">
+                </div>
+
+                <div class="form-group-adv">
+                    <label>Penerbit</label>
+                    <input type="text" class="form-input-adv" placeholder="Penerbit katalog">
+                </div>
+
+                <div class="form-group-adv">
+                    <label>Kode Klasifikasi</label>
+                    <input type="text" class="form-input-adv" placeholder="Kode klasifikasi katalog">
+                </div>
+            </div>
+            <div class="adv-search-footer">
+                <button class="btn btn-primary full-width">Cari</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessibility Components -->
+    <div id="readingGuide" style="display: none;"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
