@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - CiteSmart</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         body {
+            /* Background gradient yang lembut untuk light mode */
             background: radial-gradient(circle at top right, #ffdde1, transparent),
-                radial-gradient(circle at bottom left, #e0eafc, transparent);
+                        radial-gradient(circle at bottom left, #e0eafc, transparent);
             background-color: var(--background-color);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0;
+            transition: background 0.3s ease;
         }
 
         .login-card {
@@ -27,6 +30,7 @@
             max-width: 400px;
             border: 1px solid var(--glass-border);
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .login-header {
@@ -34,10 +38,16 @@
         }
 
         .login-header i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary-color);
             margin-bottom: 10px;
             display: inline-block;
+        }
+
+        .login-header h2 {
+            font-family: 'Outfit', sans-serif;
+            margin: 10px 0;
+            color: var(--text-primary);
         }
 
         .form-group {
@@ -50,17 +60,20 @@
             margin-bottom: 8px;
             font-weight: 500;
             font-size: 0.9rem;
+            color: var(--text-primary);
         }
 
         .form-input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #eee;
+            padding: 12px 15px;
+            border: 1px solid var(--glass-border);
             border-radius: 12px;
             font-size: 1rem;
             font-family: inherit;
             background: var(--background-color);
             color: var(--text-primary);
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
         }
 
         .form-input:focus {
@@ -69,19 +82,24 @@
         }
 
         .back-link {
-            display: inline-block;
-            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 25px;
             font-size: 0.9rem;
             color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
         .back-link:hover {
             color: var(--primary-color);
         }
 
-        /* Dark mode specific override for this page's body bg */
+        /* Perbaikan Background untuk Dark Mode */
         [data-theme="dark"] body {
-            background: linear-gradient(135deg, #0F172A 0%, #330A0D 100%);
+            background: linear-gradient(135deg, #0F172A 0%, #330A0D 100%) !important;
         }
     </style>
 </head>
@@ -89,7 +107,7 @@
 <body>
 
     <div style="position: absolute; top: 20px; right: 20px;">
-        <button class="btn-icon" id="themeToggle">
+        <button class="btn-icon" id="themeToggle" title="Ganti Tema">
             <i class="ph ph-moon"></i>
         </button>
     </div>
@@ -113,7 +131,7 @@
                 <input type="password" id="password" class="form-input" placeholder="••••••••" required>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Login SSO</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 600;">Login SSO</button>
         </form>
 
         <a href="index.html" class="back-link">
@@ -122,30 +140,29 @@
     </div>
 
     <script>
-        // Theme Logic
+        // Logika Tema (Agar Sinkron dengan Halaman Lain)
         const themeToggle = document.getElementById('themeToggle');
-        const isDarkMode = localStorage.getItem('citesmart_theme') === 'dark';
+        const currentTheme = localStorage.getItem('citesmart_theme');
 
-        if (isDarkMode) {
+        if (currentTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            if (themeToggle) themeToggle.querySelector('i').classList.replace('ph-moon', 'ph-sun');
+            themeToggle.querySelector('i').className = 'ph ph-sun';
         }
 
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => {
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                if (isDark) {
-                    document.documentElement.removeAttribute('data-theme');
-                    themeToggle.querySelector('i').classList.replace('ph-sun', 'ph-moon');
-                    localStorage.setItem('citesmart_theme', 'light');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    themeToggle.querySelector('i').classList.replace('ph-moon', 'ph-sun');
-                    localStorage.setItem('citesmart_theme', 'dark');
-                }
-            });
-        }
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.querySelector('i').className = 'ph ph-moon';
+                localStorage.setItem('citesmart_theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.querySelector('i').className = 'ph ph-sun';
+                localStorage.setItem('citesmart_theme', 'dark');
+            }
+        });
 
+        // Logika Login
         function handleLogin(e) {
             e.preventDefault();
             const username = document.getElementById('username').value.trim();
@@ -156,7 +173,7 @@
                 return;
             }
 
-            // Success
+            // Simulasi Login Berhasil
             window.location.href = 'index.html';
         }
     </script>
