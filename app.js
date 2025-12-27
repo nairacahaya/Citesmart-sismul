@@ -131,3 +131,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Taruh ini di baris paling bawah app.js
+window.resetAccessibility = function() {
+    // 1. Menghapus semua class aksesibilitas dari body
+    document.body.className = ''; 
+    
+    // 2. Mengembalikan ukuran font ke standar (100%)
+    document.body.style.fontSize = ''; 
+    
+    // 3. Menyembunyikan garis baca jika sedang aktif
+    const guide = document.getElementById('readingGuide');
+    if (guide) {
+        guide.style.display = 'none';
+    }
+
+    // 4. Menutup modal setelah reset (opsional)
+    const accessModal = document.getElementById('accessModal');
+    if (accessModal) {
+        accessModal.style.display = 'none';
+    }
+};
