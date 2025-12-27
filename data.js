@@ -1,6 +1,6 @@
 const booksData = [
     {
-        id: 1,
+        id: "1", // Ubah menjadi teks dengan tanda kutip
         title: "Sistem Informasi Manajemen",
         author: "Dr. Ir. H. A. Abdul Aziz",
         category: "Buku",
@@ -8,7 +8,7 @@ const booksData = [
         tag: "Terbaru"
     },
     {
-        id: 2,
+        id: "2",
         title: "Jurnal Teknologi Informasi Vol. 5",
         author: "Telkom University",
         category: "Jurnal",
@@ -16,7 +16,7 @@ const booksData = [
         tag: "Populer"
     },
     {
-        id: 3,
+        id: "3",
         title: "Algoritma dan Pemrograman",
         author: "Suharto S.Kom",
         category: "E-Book",
@@ -24,7 +24,7 @@ const booksData = [
         tag: "E-Book"
     },
     {
-        id: 4,
+        id: "4",
         title: "Analisis Sentimen Twitter",
         author: "Andi Wijaya",
         category: "Skripsi",
