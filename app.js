@@ -155,3 +155,46 @@ window.resetAccessibility = function() {
         accessModal.style.display = 'none';
     }
 };
+
+// --- LOGIKA ADVANCED SEARCH ---
+const advModal = document.getElementById('advancedSearchModal');
+const advBtn = document.querySelector('.btn-outline'); // Tombol Advanced Search Anda
+const closeAdv = document.getElementById('closeAdvancedSearch');
+
+// Buka Modal
+if (advBtn) {
+    advBtn.onclick = (e) => {
+        e.preventDefault();
+        advModal.style.display = 'block';
+    };
+}
+
+// Tutup Modal
+if (closeAdv) {
+    closeAdv.onclick = () => advModal.style.display = 'none';
+}
+
+// Proses Pencarian Detail
+const advForm = document.getElementById('advSearchForm');
+if (advForm) {
+    advForm.onsubmit = (e) => {
+        e.preventDefault();
+        
+        const category = document.getElementById('advCategory').value;
+        const title = document.getElementById('advTitle').value.toLowerCase();
+        const author = document.getElementById('advAuthor').value.toLowerCase();
+
+        const filtered = booksData.filter(book => {
+            const matchCategory = category === 'all' || book.category === category;
+            const matchTitle = book.title.toLowerCase().includes(title);
+            const matchAuthor = book.author.toLowerCase().includes(author);
+            return matchCategory && matchTitle && matchAuthor;
+        });
+
+        displayBooks(filtered);
+        advModal.style.display = 'none';
+        
+        // Scroll otomatis ke hasil pencarian
+        document.getElementById('bookGrid').scrollIntoView({ behavior: 'smooth' });
+    };
+}
