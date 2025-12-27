@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorit Saya - CiteSmart</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <nav class="navbar glass">
+        <div class="container nav-content">
+            <a href="index.html" class="brand">
+                <i class="ph-fill ph-books"></i> CiteSmart
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="index.html#searchInput">Katalog</a>
+                <a href="repository.html">Repository</a>
+                <a href="favorites.html" class="active">Favorit</a>
+                <button class="btn-icon" id="themeToggle" style="margin-right: 10px;">
+                    <i class="ph ph-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-primary" style="padding: 8px 20px;">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 30vh; padding: 120px 0 40px;">
+        <div class="container">
+            <h1>Koleksi Favorit</h1>
+            <p>Daftar buku dan referensi yang telah Anda simpan.</p>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div id="favoritesGrid" class="grid">
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <i class="ph ph-heart-break" style="font-size: 3rem; color: #ccc;"></i>
+                <p style="margin-top: 10px; color: var(--text-secondary);">Belum ada koleksi favorit yang disimpan.</p>
+                <a href="index.html#katalog" class="btn btn-outline" style="margin-top: 20px;">Cari Koleksi</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
