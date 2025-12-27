@@ -20,28 +20,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         books.forEach(book => {
-            const card = `
-            <div class="card-actions">
-                <button class="btn-icon heart-btn" onclick="toggleFavorite('${book.id}')">
-                    <i class="${isFavorite(book.id) ? 'ph-fill' : 'ph'} ph-heart" 
-                       style="color: ${isFavorite(book.id) ? '#BE1622' : 'inherit'}"></i>
-                </button>
-                <button class="btn-icon"><i class="ph ph-eye"></i></button>
+    const card = `
+        <div class="card">
+            <div class="card-img-wrapper">
+                <img src="${book.image}" alt="${book.title}" class="card-img">
             </div>
-                    <div class="card-body">
-                        <span class="card-tag">${book.tag}</span>
-                        <h3 class="card-title" title="${book.title}">${book.title}</h3>
-                        <p class="card-author">${book.author}</p>
-                        <div class="card-actions">
-                            <button class="btn-icon"><i class="ph ph-heart"></i></button>
-                            <button class="btn-icon"><i class="ph ph-eye"></i></button>
-                        </div>
-                    </div>
+            <div class="card-body">
+                <span class="card-tag">${book.tag}</span>
+                <h3 class="card-title" title="${book.title}">${book.title}</h3>
+                <p class="card-author">${book.author}</p>
+                
+                <div class="card-actions">
+                    <button class="btn-icon heart-btn" onclick="toggleFavorite('${book.id}')">
+                        <i class="${isFavorite(book.id) ? 'ph-fill' : 'ph'} ph-heart" 
+                           style="color: ${isFavorite(book.id) ? '#BE1622' : 'inherit'}"></i>
+                    </button>
+                    <button class="btn-icon">
+                        <i class="ph ph-eye"></i>
+                    </button>
                 </div>
-            `;
-            bookGrid.innerHTML += card;
+            </div>
+        </div>
+    `;
+    bookGrid.innerHTML += card;
         });
-    }
 
     // Jalankan fungsi display jika data tersedia
     if (typeof booksData !== 'undefined' && bookGrid) {
