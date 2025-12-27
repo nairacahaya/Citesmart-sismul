@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         books.forEach(book => {
             const card = `
-                // Ganti baris di dalam displayBooks (Bagian Card Actions)
             <div class="card-actions">
                 <button class="btn-icon heart-btn" onclick="toggleFavorite('${book.id}')">
                     <i class="${isFavorite(book.id) ? 'ph-fill' : 'ph'} ph-heart" 
