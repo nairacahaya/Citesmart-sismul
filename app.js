@@ -21,10 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         books.forEach(book => {
             const card = `
-                <div class="card">
-                    <div class="card-img-wrapper">
-                        <img src="${book.image}" alt="${book.title}" class="card-img">
-                    </div>
+                // Ganti baris di dalam displayBooks (Bagian Card Actions)
+            <div class="card-actions">
+                <button class="btn-icon heart-btn" onclick="toggleFavorite('${book.id}')">
+                    <i class="${isFavorite(book.id) ? 'ph-fill' : 'ph'} ph-heart" 
+                       style="color: ${isFavorite(book.id) ? '#BE1622' : 'inherit'}"></i>
+                </button>
+                <button class="btn-icon"><i class="ph ph-eye"></i></button>
+            </div>
                     <div class="card-body">
                         <span class="card-tag">${book.tag}</span>
                         <h3 class="card-title" title="${book.title}">${book.title}</h3>
@@ -198,3 +202,35 @@ if (advForm) {
         document.getElementById('bookGrid').scrollIntoView({ behavior: 'smooth' });
     };
 }
+
+// --- LOGIKA FAVORIT (TARUH DI BARIS PALING BAWAH) ---
+
+// 1. Ambil data favorit yang tersimpan
+let favorites = JSON.parse(localStorage.getItem('citesmart_favorites')) || [];
+
+// 2. Fungsi mengecek status favorit
+window.isFavorite = function(bookId) {
+    return favorites.some(fav => fav.id === bookId);
+};
+
+// 3. Fungsi Tambah/Hapus Favorit
+window.toggleFavorite = function(bookId) {
+    const bookIndex = favorites.findIndex(fav => fav.id === bookId);
+    
+    if (bookIndex > -1) {
+        // Jika sudah ada, hapus
+        favorites.splice(bookIndex, 1);
+    } else {
+        // Jika belum ada, cari data asli dan tambahkan
+        const bookData = booksData.find(b => b.id === bookId);
+        if (bookData) favorites.push(bookData);
+    }
+    
+    // Simpan ke memori browser
+    localStorage.setItem('citesmart_favorites', JSON.stringify(favorites));
+    
+    // Refresh tampilan agar warna hati berubah seketika
+    const currentQuery = searchInput ? searchInput.value.toLowerCase() : "";
+    const filtered = booksData.filter(book => book.title.toLowerCase().includes(currentQuery));
+    displayBooks(filtered);
+};
