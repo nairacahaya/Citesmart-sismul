@@ -73,17 +73,34 @@
     </button>
 
     <div id="accessModal" class="access-modal glass" style="display: none;">
+        <div class="access-header">
+            <h3>Menu Aksesibilitas</h3>
+            <button class="btn-icon small" id="closeAccess"><i class="ph ph-x"></i></button>
         </div>
+        <div class="access-body">
+            <div class="access-section">
+                <h4>Penyesuaian Teks</h4>
+                <div class="access-control-group">
+                    <button class="access-btn-control" onclick="adjustText(2)">Font +</button>
+                    <button class="access-btn-control" onclick="adjustText(-2)">Font -</button>
+                    <button class="access-card" onclick="toggleAccess('font-dyslexia')">Font Disleksia</button>
+                </div>
+            </div>
+            <div class="access-section">
+                <h4>Penyesuaian Warna & Alat</h4>
+                <div class="access-grid">
+                    <button class="access-card" onclick="toggleAccess('contrast-high')">Kontras Tinggi</button>
+                    <button class="access-card" onclick="toggleAccess('monochrome')">Monokrom</button>
+                    <button class="access-card" onclick="toggleAccess('reading-guide')">Garis Baca</button>
+                </div>
+            </div>
+            <button class="btn btn-primary full-width" id="resetAll" onclick="resetAccessibility()">Atur Ulang</button>
+        </div>
+    </div>
 
-    <div id="readingGuide" class="reading-guide" style="display: none;"></div>
+    <div id="readingGuide" class="reading-guide"></div>
 
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
-</html>
-
-    <script src="data.js"></script>
-    <script src="app.js"></script>
-</body>
-
 </html>
