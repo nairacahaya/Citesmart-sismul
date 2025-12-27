@@ -91,9 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. FITUR AKSESIBILITAS (GLOBAL FUNCTIONS) ---
     window.adjustText = function(amount) {
-        const body = document.body;
-        const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
-        body.style.fontSize = (currentSize + amount) + 'px';
+    const body = document.body;
+    const currentSize = parseFloat(window.getComputedStyle(body).fontSize);
+    body.style.fontSize = (currentSize + amount) + 'px';
     };
 
     window.toggleAccess = function(className) {
