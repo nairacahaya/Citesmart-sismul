@@ -198,5 +198,3 @@ if (advForm) {
         document.getElementById('bookGrid').scrollIntoView({ behavior: 'smooth' });
     };
 }
-
-dibagian manaa
