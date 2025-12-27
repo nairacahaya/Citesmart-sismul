@@ -96,12 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
     body.style.fontSize = (currentSize + amount) + 'px';
     };
 
-    window.toggleAccess = function(className) {
-        document.body.classList.toggle(className);
-        const guide = document.getElementById('readingGuide');
-        if (className === 'reading-guide' && guide) {
-            guide.style.display = document.body.classList.contains('reading-guide') ? 'block' : 'none';
-        }
+   window.toggleAccess = function(className) {
+    document.body.classList.toggle(className);
+    
+    // Logika khusus untuk menampilkan/menyembunyikan garis
+    const guide = document.getElementById('readingGuide');
+    if (className === 'reading-guide' && guide) {
+        // Jika class aktif, tampilkan. Jika tidak, sembunyikan.
+        guide.style.display = document.body.classList.contains('reading-guide') ? 'block' : 'none';
+    }
     };
 
     // Modal & Reading Guide Logic
