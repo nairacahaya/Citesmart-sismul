@@ -573,7 +573,43 @@
             </div>
         </div>
     </div>
-
+    <div id="advancedSearchModal" class="access-modal glass" style="display: none; max-width: 500px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10001;">
+    <div class="access-header">
+        <h3>Pencarian Detil Katalog</h3>
+        <button class="btn-icon small" id="closeAdvancedSearch"><i class="ph ph-x"></i></button>
+    </div>
+    <div class="access-body">
+        <form id="advSearchForm">
+            <div class="form-group-adv">
+                <label class="form-label">Jenis</label>
+                <select id="advCategory" class="form-input-adv" style="width: 100%; padding: 10px; border-radius: 8px;">
+                    <option value="all">Pilih jenis katalog</option>
+                    <option value="Buku">Buku</option>
+                    <option value="E-Book">E-Book</option>
+                    <option value="Jurnal">Jurnal</option>
+                    <option value="Skripsi">Skripsi</option>
+                </select>
+            </div>
+            <div class="form-group-adv">
+                <label class="form-label">Judul</label>
+                <input type="text" id="advTitle" class="form-input-adv" placeholder="Judul katalog">
+            </div>
+            <div class="form-group-adv">
+                <label class="form-label">Pengarang</label>
+                <input type="text" id="advAuthor" class="form-input-adv" placeholder="Nama pengarang katalog">
+            </div>
+            <div class="form-group-adv">
+                <label class="form-label">Penerbit</label>
+                <input type="text" id="advPublisher" class="form-input-adv" placeholder="Penerbit katalog">
+            </div>
+            <div class="form-group-adv">
+                <label class="form-label">Penyunting/Pembimbing</label>
+                <input type="text" id="advEditor" class="form-input-adv" placeholder="Nama penyunting / pembimbing">
+            </div>
+            <button type="submit" class="btn btn-primary full-width" style="margin-top: 20px;">Cari Koleksi</button>
+        </form>
+    </div>
+</div>
     <!-- Accessibility Components -->
     <div id="readingGuide" style="display: none;"></div>
 
